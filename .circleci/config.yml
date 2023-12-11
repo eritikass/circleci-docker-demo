@@ -28,6 +28,7 @@ jobs:
           name: "Create a new buildx builder instance"
           command: |
             docker buildx create --name mybuilder --use
+      - debugit
       - run:
           name: build image for amd64
           command: |
