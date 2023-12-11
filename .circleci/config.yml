@@ -25,6 +25,10 @@ jobs:
             ssh remote-docker "sudo apt-get update; sudo apt-get install -y qemu-user-static binfmt-support; qemu-aarch64-static --version"
       - debugit
       - run:
+          name: "Create a new buildx builder instance"
+          command: |
+            docker buildx create --name mybuilder --use
+      - run:
           name: build image for amd64
           command: |
             docker buildx build --platform linux/amd64 -t test1-amd64 .
